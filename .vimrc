@@ -1,8 +1,10 @@
 set nocompatible " be iMproved
-filetype off                   " required!
+filetype off     " required!
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+
+Bundle "jimenezrick/vimerl"
 
 " let Vundle manage Vundle
 " required! 
@@ -19,11 +21,11 @@ Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'sjl/gundo.vim'
 
 " Color scheme
-Bundle 'cschlueter/vim-mustang'
-Bundle 'godlygeek/csapprox'
+"Bundle 'cschlueter/vim-mustang'
+"Bundle 'godlygeek/csapprox'
 
 " Utilities
-Bundle "tsaleh/vim-matchit"
+Bundle 'mhz/vim-matchit'
 Bundle 'Raimondi/delimitMate'
 
 " Syntax Commenter
@@ -33,15 +35,15 @@ Bundle 'vim-scripts/tComment'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " Universal Syntax Checker + Completion
-"Bundle 'UltiSnips'
+Bundle 'UltiSnips'
 Bundle 'scrooloose/syntastic'
-"Bundle "Shougo/neocomplcache"
+Bundle "Shougo/neocomplcache"
 
 " Python Syntax Checker
 Bundle 'kevinw/pyflakes-vim'
 Bundle 'vim-scripts/pep8'
 Bundle 'vim-scripts/Pydiction'
-Bundle "vim-scripts/indentpython.vim"
+Bundle 'vim-scripts/indentpython.vim'
 
 " Versioning System
 Bundle 'tpope/vim-fugitive'
@@ -133,7 +135,7 @@ set so=7            " Set 7 lines to the curors - when moving vertical..
 set ruler           "Always show current position
 set hid             "Change buffer - without saving
 set nohidden
-set mouse=a
+"set mouse=a
 
 " Set backspace config
 set backspace=eol,start,indent
@@ -157,9 +159,10 @@ syntax enable "Enable syntax hl
 set shell=/bin/bash
 
 set guioptions-=T
-set background=dark
-let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
-colorscheme mustang
+"set background=dark
+"set t_Co=256
+"let g:CSApprox_attr_map = { 'bold' : 'bold', 'italic' : '', 'sp' : '' }
+"colorscheme mustang
 set nonu
 set gfn=Liberation\ Mono\ 10 
 
@@ -232,12 +235,12 @@ set numberwidth=1             " using only 1 column (and 1 space) while possible
 set title                     " show title in console title bar
 set wildmenu                  " Menu completion in command mode on <Tab>
 set pastetoggle=<F3>          " Press F3 for toggle paste mode
-set cursorline
-set colorcolumn=80 " Mark 80th column with a red line
+"set cursorline
+"set colorcolumn=80 " Mark 80th column with a red line
 
 " Taken From http://stackoverflow.com/questions/235439/vim-80-column-layout-concerns
-autocmd FileType python highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
-autocmd FileType python match OverLength /\%81v.\+/
+"autocmd FileType python highlight OverLength ctermbg=darkred ctermfg=white guibg=#FFD9D9
+"autocmd FileType python match OverLength /\%81v.\+/
 
 " Paste using ,v in normal mode
 nnoremap <leader>v "+gP
@@ -337,6 +340,11 @@ autocmd FileType css set sw=2
 autocmd FileType css set ts=2
 autocmd FileType css set sts=2
 
+" XSL (tab width 2 chr, no wrapping)
+autocmd FileType xsl set sw=2
+autocmd FileType xsl set ts=2
+autocmd FileType xsl set sts=2
+
 " Folding
 " auto save folding : http://princ3.wordpress.com/2007/01/26/automaticaly-save-foldings-in-vim/
 set viewoptions=folds
@@ -400,7 +408,7 @@ autocmd InsertLeave * if pumvisible() == 0|pclose|endif
 let g:pep8_map='<F6>'
 
 " Pydiction
-let g:pydiction_location='/home/ubuntu/.vim/bundle/Pydiction/complete-dict'
+let g:pydiction_location='/home/jason/.vim/bundle/Pydiction/complete-dict'
 
 """" PYTHON STYLE """"
 let python_highlight_all=1 " Enable all plugin's highlighting.
@@ -420,7 +428,8 @@ map <leader><space> :MRU<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Pyflakes configuration
 if has("gui_running")
-    highlight SpellBad term=underline gui=undercurl guisp=Orange
+    "highlight SpellBad term=underline gui=undercurl guisp=Orange
+    highlight SpellBad  gui=undercurl guisp=Orange
 endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -430,7 +439,8 @@ endif
 highlight Pmenu gui=bold
 
 if has("gui_running")
-    highlight SpellBad term=underline gui=undercurl guisp=Orange
+    "highlight SpellBad term=underline gui=undercurl guisp=Orange
+    highlight SpellBad  gui=undercurl guisp=Orange
 endif
 
 
@@ -594,4 +604,3 @@ if has("autocmd")
                 \ exec oldwinnr . " wincmd w"
 endif
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""}}}
-
